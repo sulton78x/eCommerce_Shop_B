@@ -1,6 +1,17 @@
 import Link from 'next/link'
+import { useSelector } from 'react-redux'
+import { ShoppingCart } from 'react-feather'
 
 const Navbar = () => {
+
+    // Selecting cart from global state.
+    const cart = useSelector((state) => state.cart)
+
+    // Getting the count of items
+    const getItemsCount = () => {
+        return cart.reduce((accumulator, item) => accumulator + item.quantity, 0)
+    }
+
     return (
         <nav className='border-b-2 border-black py-4'>
             {/* Logo */}
@@ -17,6 +28,12 @@ const Navbar = () => {
                     <Link href='/cart'><a>Cart</a></Link>
                 </li>
             </ul>
+            
+            {/* Cart with items Count */}
+            <div>
+                <ShoppingCart />
+                <span>{getItemsCount()}</span>
+            </div>
             {/* Sign Up / Login Button */}
         </nav>
     )

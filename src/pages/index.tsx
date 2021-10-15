@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState, FC } from 'react'
 import Head from "next/head";
 
 // add Chat Functionality
 
-const HomePage = () => {
+const HomePage: FC = () => {
 
 	const [cart, setCart] = useState(0)
 	return (
